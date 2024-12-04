@@ -1,11 +1,10 @@
 plugins {
-    id 'org.springframework.boot' version '3.0.2' apply false
-    id 'io.spring.dependency-management' version '1.1.0' apply false
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
 }
 
-group = 'org.jiumao'
-version = '1.0.0'
+
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 allprojects {
@@ -16,18 +15,42 @@ allprojects {
 }
 
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
+    group = 'org.jiumao'
+    version = '1.0.0'
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+//    configurations {
+//        compileOnly {
+//            extendsFrom annotationProcessor
+//        }
+//        annotationProcessor
+//    }
+
+    apply {
+        plugin('java')
+        plugin('org.springframework.boot')
+        plugin('io.spring.dependency-management')
+    }
+
 
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+//        implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+        implementation 'org.springframework.boot:spring-boot-starter'
         implementation 'org.springframework.boot:spring-boot-starter-web'
+//        implementation 'com.vladmihalcea:hibernate-types-52:2.21.1'
+        implementation 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.18.2'
         compileOnly 'org.projectlombok:lombok'
+        implementation 'org.joda:joda-money:1.0.5'
         runtimeOnly 'com.mysql:mysql-connector-j'
         annotationProcessor 'org.projectlombok:lombok'
+        implementation 'cn.hutool:hutool-all:5.8.16'
+
     }
 
     java.sourceCompatibility = JavaVersion.VERSION_17
