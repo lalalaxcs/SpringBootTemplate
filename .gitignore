@@ -1,7 +1,7 @@
 ### Java template
 # Compiled class file
 *.class
-
+/*.xml
 #idea
 /.idea
 @@ -0,0 +1,29 @@
