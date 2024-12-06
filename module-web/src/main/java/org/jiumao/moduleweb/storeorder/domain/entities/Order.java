@@ -22,7 +22,6 @@ import java.util.List;
 @Table(name = "t_order")
 @Builder
 @ToString
-
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
