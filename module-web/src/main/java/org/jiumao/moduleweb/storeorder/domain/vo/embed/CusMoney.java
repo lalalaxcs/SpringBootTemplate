@@ -22,6 +22,10 @@ public class CusMoney {
 		this.currencyCode = currencyCode;
 	}
 
+	public CusMoney(BigDecimal amount) {
+		this.amount = amount;
+	}
+
 	public static CusMoney ofMinor(String currencyCode, BigDecimal minorUnits) {
 		return new CusMoney(minorUnits.divide(BigDecimal.valueOf(100), 4, RoundingMode.HALF_UP), currencyCode);
 	}
