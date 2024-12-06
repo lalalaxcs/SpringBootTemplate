@@ -7,9 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.jiumao.moduleweb.common.Annotaions.CurrencyField;
 import org.jiumao.moduleweb.storeorder.domain.vo.converter.MoneyConverter;
+import org.jiumao.moduleweb.storeorder.domain.vo.embed.CusMoney;
 import org.jiumao.moduleweb.storeorder.domain.vo.enums.TeaSize;
-import org.joda.money.Money;
 
 import java.util.Date;
 
@@ -23,6 +24,7 @@ import java.util.Date;
 @Builder
 @Entity
 @Table(name = "t_menu")
+@CurrencyField
 public class MenuItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +33,7 @@ public class MenuItem {
 	@Enumerated(EnumType.STRING)
 	private TeaSize size;
 	@Convert(converter = MoneyConverter.class)
-	private Money price;
+	private CusMoney price;
 	@CreationTimestamp
 	private Date createDate;
 	@UpdateTimestamp

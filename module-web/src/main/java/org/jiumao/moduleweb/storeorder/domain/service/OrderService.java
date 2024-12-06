@@ -19,6 +19,7 @@ public class OrderService {
 				.updateTime(order.getUpdateTime())
 				.status(order.getStatus())
 				.teaMakerName(order.getTeaMaker().getName())
+				.currency(order.getCurrency())
 				.build();
 	}
 }

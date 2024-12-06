@@ -2,16 +2,11 @@ package org.jiumao.moduleweb.storeorder.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.jiumao.moduleweb.storeorder.domain.vo.embed.Amount;
 import org.jiumao.moduleweb.storeorder.domain.vo.enums.OrderStatus;
-import org.joda.money.CurrencyUnit;
-import org.joda.money.Money;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +22,7 @@ import java.util.List;
 @Table(name = "t_order")
 @Builder
 @ToString
+
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

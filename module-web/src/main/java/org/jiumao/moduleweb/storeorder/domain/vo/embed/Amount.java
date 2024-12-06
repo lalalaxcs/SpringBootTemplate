@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jiumao.moduleweb.storeorder.domain.vo.converter.MoneyConverter;
-import org.joda.money.Money;
 
 /**
  * @author : [xvChuShun]
@@ -23,8 +22,8 @@ public class Amount {
 
 	@Column(name = "amount_total")
 	@Convert(converter = MoneyConverter.class)
-	private Money totalAmount;
+	private CusMoney totalAmount;
 	@Column(name = "amount_pay")
 	@Convert(converter = MoneyConverter.class)
-	private Money payAmount;
+	private CusMoney payAmount;
 }

@@ -7,19 +7,17 @@ package org.jiumao.moduleweb.storeorder.domain.vo.converter;
 
 import cn.hutool.core.util.ObjectUtil;
 import jakarta.persistence.AttributeConverter;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Converter;
-import org.joda.money.CurrencyUnit;
-import org.joda.money.Money;
+import org.jiumao.moduleweb.storeorder.domain.vo.embed.CusMoney;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Converter(autoApply = true)
-public class MoneyConverter implements AttributeConverter<Money, BigDecimal> {
+public class MoneyConverter implements AttributeConverter<CusMoney, BigDecimal> {
 
 	@Override
-	public BigDecimal convertToDatabaseColumn(Money money) {
+	public BigDecimal convertToDatabaseColumn(CusMoney money) {
 		if (ObjectUtil.isEmpty(money)) {
 			return null;
 		}
@@ -28,13 +26,12 @@ public class MoneyConverter implements AttributeConverter<Money, BigDecimal> {
 	}
 
 	@Override
-	public Money convertToEntityAttribute(BigDecimal bigDecimal) {
+	public CusMoney convertToEntityAttribute(BigDecimal bigDecimal) {
 		if (bigDecimal == null) {
 			return null;
 		}
 		// 读取时缩小100倍恢复为元
-		CurrencyUnit currencyUnit = CurrencyUnit.of("CNY");
-		long minorUnits = bigDecimal.setScale(4, RoundingMode.HALF_UP).longValue();
-		return Money.ofMinor(currencyUnit, minorUnits);
+		BigDecimal minorUnits = bigDecimal.setScale(4, RoundingMode.HALF_UP);
+		return CusMoney.ofMinor("CNY", minorUnits);
 	}
 }

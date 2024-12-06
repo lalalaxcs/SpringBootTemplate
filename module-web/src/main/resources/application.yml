@@ -39,7 +39,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/binaryTea?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://120.27.153.61:33066/binarytea?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: lalala123
   jpa:
