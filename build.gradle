@@ -50,7 +50,8 @@ subprojects {
         runtimeOnly 'com.mysql:mysql-connector-j'
         annotationProcessor 'org.projectlombok:lombok'
         implementation 'cn.hutool:hutool-all:5.8.16'
-
+        implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
     }
 
     java.sourceCompatibility = JavaVersion.VERSION_17

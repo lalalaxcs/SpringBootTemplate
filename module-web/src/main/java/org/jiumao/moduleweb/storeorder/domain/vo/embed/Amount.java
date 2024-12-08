@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jiumao.moduleweb.storeorder.domain.vo.converter.MoneyConverter;
 
+import java.io.Serializable;
+
 /**
  * @author : [xvChuShun]
  * @createTime : [2024/11/23 15:57]
@@ -16,7 +18,7 @@ import org.jiumao.moduleweb.storeorder.domain.vo.converter.MoneyConverter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-public class Amount {
+public class Amount implements Serializable {
 	@Column(name = "amount_discount")
 	private Double disCount;
 

@@ -1,31 +1,28 @@
 package org.jiumao.moduleweb.storeorder.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.jiumao.moduleweb.common.Annotaions.CurrencyField;
+import lombok.*;
+import org.hibernate.proxy.HibernateProxy;
 import org.jiumao.moduleweb.storeorder.domain.vo.converter.MoneyConverter;
 import org.jiumao.moduleweb.storeorder.domain.vo.embed.CusMoney;
 import org.jiumao.moduleweb.storeorder.domain.vo.enums.TeaSize;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author : [xvChuShun]
  * @createTime : [2024/11/14 22:06]
  */
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "t_menu")
-@CurrencyField
-public class MenuItem {
+public class MenuItem extends BaseEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -34,8 +31,5 @@ public class MenuItem {
 	private TeaSize size;
 	@Convert(converter = MoneyConverter.class)
 	private CusMoney price;
-	@CreationTimestamp
-	private Date createDate;
-	@UpdateTimestamp
-	private Date updateDate;
+
 }

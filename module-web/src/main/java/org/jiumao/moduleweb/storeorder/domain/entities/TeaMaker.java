@@ -1,13 +1,11 @@
 package org.jiumao.moduleweb.storeorder.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +20,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "t_tea_maker")
-public class TeaMaker {
+@EqualsAndHashCode(callSuper = false)
+public class TeaMaker extends BaseEntity implements   Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -32,8 +31,4 @@ public class TeaMaker {
 	@OrderBy("id desc ")
 	private List<Order> orders = new ArrayList<>();
 
-	@CreationTimestamp
-	private Date createTime;
-	@UpdateTimestamp
-	private Date updateTime;
 }

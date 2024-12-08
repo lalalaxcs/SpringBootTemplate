@@ -20,3 +20,15 @@
 - 提交的类型和标记词（如 `feat`、`fix` 等）**不区分大小写**，但 `BREAKING CHANGE` 必须大写。
 - 尾部中的 `BREAKING-CHANGE` 必须等同于 `BREAKING CHANGE`。
 
+#Dcoker 指令
+启动docker服务 systemctl start docker 
+查看docker状态 systemctl status docker 
+redis 配置文件 /mydata/redis/conf/redis.conf
+redis 密码 yourpassword
+
+docker run --name  redis \
+-p 6379:6379 \
+-v /var/log/redis:/var/log/redis \
+-v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \
+-v /docker-data/redis:/data \
+-d redis redis-server /etc/redis/redis.conf --appendonly yes

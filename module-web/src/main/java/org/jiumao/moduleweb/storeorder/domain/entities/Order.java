@@ -2,12 +2,9 @@ package org.jiumao.moduleweb.storeorder.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.jiumao.moduleweb.storeorder.domain.vo.embed.Amount;
 import org.jiumao.moduleweb.storeorder.domain.vo.enums.OrderStatus;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,8 +18,7 @@ import java.util.List;
 @Entity
 @Table(name = "t_order")
 @Builder
-@ToString
-public class Order {
+public class Order extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -33,8 +29,8 @@ public class Order {
 
 	@ManyToMany
 	@JoinTable(name = "t_order_item",
-			joinColumns = @JoinColumn(name = "item_id"),
-			inverseJoinColumns = @JoinColumn(name = "order_id"))
+			joinColumns = @JoinColumn(name = "order_id"),
+			inverseJoinColumns = @JoinColumn(name = "item_id"))
 	private List<MenuItem> items;
 	@Enumerated
 	private Amount amount;
@@ -45,9 +41,6 @@ public class Order {
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 
-	@CreationTimestamp
-	private Date createTime;
 
-	@UpdateTimestamp
-	private Date updateTime;
+
 }

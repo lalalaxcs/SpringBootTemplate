@@ -1,7 +1,8 @@
-package org.jiumao.moduleweb;
+package org.jiumao.moduleweb.storeorder.domain.dto;
 
-import lombok.Value;
-import org.jiumao.moduleweb.storeorder.domain.vo.embed.CusMoney;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,7 +10,9 @@ import java.util.List;
 /**
  * DTO for {@link org.jiumao.moduleweb.storeorder.domain.entities.Order}
  */
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderRequest implements Serializable {
 	Long teaMakerId;
 	List<Long> itemIds;

@@ -3,6 +3,8 @@ package org.jiumao.moduleweb.storeorder.domain.vo.embed;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -12,7 +14,7 @@ import java.math.RoundingMode;
  */
 @Setter
 @Getter
-public class CusMoney {
+public class CusMoney implements Serializable {
 	private BigDecimal amount;  // 数值
 	private String currencyCode = "CNY";  // 货币类型
 
@@ -28,6 +30,14 @@ public class CusMoney {
 
 	public static CusMoney ofMinor(String currencyCode, BigDecimal minorUnits) {
 		return new CusMoney(minorUnits.divide(BigDecimal.valueOf(100), 4, RoundingMode.HALF_UP), currencyCode);
+	}
+
+	public static CusMoney of(BigDecimal amount){
+		return new CusMoney(amount);
+	}
+
+	public static CusMoney of(BigDecimal amount,String currencyCode){
+		return new CusMoney(amount,currencyCode);
 	}
 
 	// 判断是否为负数
